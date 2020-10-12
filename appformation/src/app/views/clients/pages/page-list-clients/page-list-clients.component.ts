@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageListClientsComponent implements OnInit {
 
-  constructor() { }
+  public clientListTitle: string;
+  constructor() {
+    this.clientListTitle = 'Ma liste de clients!';
+  }
 
   ngOnInit(): void {
   }
