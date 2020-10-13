@@ -10,10 +10,13 @@ import { OrdersService } from '../../services/orders.service';
 export class PageListOrdersComponent implements OnInit {
 
   public collectionOrder: Order[];
+  public collectionHeaders: String[];
+
   constructor( private os: OrdersService) {
   }
 
   ngOnInit(): void {
+    this.collectionHeaders = ['Type', 'Client', 'Nb jours', 'TJM HT', 'Total HT', 'Comment', 'Etat']
     this.os.collection.subscribe(orders => {
       this.collectionOrder = orders;
       console.log(this.collectionOrder);

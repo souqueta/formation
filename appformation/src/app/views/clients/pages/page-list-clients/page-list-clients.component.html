@@ -1,1 +1,4 @@
 <p>{{clientListTitle}}</p>
+<app-table-light *ngIf="collectionClient"
+ [collectionClient]="collectionClient" [headers]="collectionHeaders">
+</app-table-light>
