@@ -29,4 +29,12 @@ private urlApi: string = environment.url;
   public set collection(col: Observable<Order[]>) {
     this.pCollection = col;
   }
+
+  public getById(id_order: number): Observable<Order> {
+    return this.http.get<Order>(`${this.urlApi}orders/${id_order}`).pipe(
+      map(jsonObject => {
+        return new Order(jsonObject);
+      })
+    )
+  }
 }

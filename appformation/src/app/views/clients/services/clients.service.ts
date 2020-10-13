@@ -29,4 +29,14 @@ export class ClientsService {
     public set collection(col: Observable<Client[]>) {
       this.pCollection = col;
     }
+
+    public getByState(state_client: string): Observable<Client[]> {
+      return this.http.get<Client[]>(`${this.urlApi}orders?state=${state_client}`).pipe(
+        map(jsonObjects => {
+          return jsonObjects.map(obj => {
+            return new Client(obj);
+          })
+        })
+      )
+    }
 }
