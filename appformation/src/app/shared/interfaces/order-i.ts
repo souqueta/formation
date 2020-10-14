@@ -12,4 +12,5 @@ export interface OrderI {
 
   totalHT(): number,
   totalTTC(): number,
+  date: Date;
 }

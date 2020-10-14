@@ -11,6 +11,7 @@ export class Order implements OrderI {
   typePresta: string;
   client: string;
   comment: string;
+  date: Date;
   totalHT(): number {
     return this.tjmHT * this.nbJours;
   }

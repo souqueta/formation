@@ -8,7 +8,8 @@
       "typePresta": "Formation",
       "client": "M2i",
       "comment": "merci m2i",
-      "id": 1
+      "id": 1,
+      "date": "2020-01-01"
     },
     {
       "tjmHT": 1200,
@@ -18,7 +19,8 @@
       "typePresta": "Formation",
       "client": "Modis",
       "comment": "merci modis",
-      "id": 2
+      "id": 2,
+      "date": "2020-01-01"
     },
     {
       "tjmHT": 500,
@@ -28,7 +30,8 @@
       "typePresta": "Formation",
       "client": "nemesys",
       "comment": "",
-      "id": 3
+      "id": 3,
+      "date": "2020-01-01"
     },
     {
       "tjmHT": 700,
@@ -38,7 +41,8 @@
       "typePresta": "Formation",
       "client": "Atos",
       "comment": "Comment pour Atos",
-      "id": 4
+      "id": 4,
+      "date": "2020-01-01"
     }
   ],
   "clients": [
@@ -57,6 +61,26 @@
       "ca": 120000,
       "comment": "Un comment pour client modis",
       "id": 2
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "admin",
+      "role": "ADMIN"
+    },
+    {
+      "id": "2",
+      "username": "user1",
+      "password": "user1",
+      "role": "USER1"
+    },
+    {
+      "id": "3",
+      "username": "user2",
+      "password": "user2",
+      "role": "USER"
     }
   ]
 }

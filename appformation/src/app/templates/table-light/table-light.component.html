@@ -14,6 +14,7 @@
         <td>{{ c | total: 'TTC' | currency: 'USD' }}</td>
         <td>{{ c | total | currency: 'USD'  }}</td>
         <td>{{ c.comment }}</td>
+        <td>{{ c.date | date: 'dd-MM-yyyy' }}</td>
         <td>{{ c.state }}</td>
     </tr>
   </tbody>
@@ -26,6 +27,14 @@
       <td>{{ c.tva }}</td>
       <td>{{ c.total() }}</td>
       <td>{{ c.state }}</td>
+    </tr>
+  </tbody>
+  <tbody *ngIf="collectionUser">
+    <tr *ngFor="let c of collectionUser">
+      <td>{{ c.id }}</td>
+      <td>{{ c.username }}</td>
+      <td>{{ c.password }}</td>
+      <td>{{ c.role }}</td>
     </tr>
   </tbody>
 
