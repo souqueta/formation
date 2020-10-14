@@ -1,5 +1,5 @@
 <p>{{clientListTitle}}</p>
-<app-table-light *ngIf="collectionClient" [headers]="collectionHeaders">
+<app-table-dark *ngIf="collectionClient" [headers]="collectionHeaders">
   <tr *ngFor="let c of collectionClient">
     <td>{{ c.id }}</td>
     <td>{{ c.name }}</td>
@@ -17,6 +17,6 @@
     </td>
 
   </tr>
-</app-table-light>
+</app-table-dark>
 
 <app-btn [label]="btnRoute.label" [route]="btnRoute.route"></app-btn>
