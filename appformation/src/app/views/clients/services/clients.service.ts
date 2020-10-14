@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Client } from 'src/app/shared/models/client.model';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
+import { StateClient } from 'src/app/shared/enums/state-client.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -39,4 +40,15 @@ export class ClientsService {
         })
       )
     }
+
+
+  public update(client: Client): Observable<Client> {
+    return this.http.put<Client>(`${this.urlApi}clients/${client.id}`, client)
+  }
+
+  public updateState(client: Client, state: StateClient): Observable<Client> {
+    const obj = new Client({...client})
+    obj.state = state;
+    return this.update(obj);
+  }
 }

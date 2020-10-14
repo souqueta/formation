@@ -7,6 +7,14 @@
     <td>{{ c.comment }}</td>
     <td>{{ c.tva }}</td>
     <td>{{ c.total() }}</td>
-    <td>{{ c.state }}</td>
+    <!-- <td>{{ c.state }}</td> -->
+    <td>
+      <select (change) = "changeState(c, $event)">
+        <option *ngFor="let s of states" [value]="s" [selected]= "s === c.state">
+          {{s}}
+        </option>
+      </select>
+    </td>
+
   </tr>
 </app-table-light>
