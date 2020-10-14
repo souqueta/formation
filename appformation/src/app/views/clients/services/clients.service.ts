@@ -51,4 +51,9 @@ export class ClientsService {
     obj.state = state;
     return this.update(obj);
   }
+
+  public addClient(client: Client): void {
+    this.http.post<Client>(`${this.urlApi}clients/`, client)
+  }
+
 }

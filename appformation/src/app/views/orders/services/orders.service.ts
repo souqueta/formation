@@ -58,4 +58,8 @@ private urlApi: string = environment.url;
       )
     )
   }
+
+  public addOrder(order: Order): void {
+    this.http.post<Order>(`${this.urlApi}orders/`, order)
+  }
 }
