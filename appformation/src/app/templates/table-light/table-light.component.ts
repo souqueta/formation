@@ -1,7 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Client } from 'src/app/shared/models/client.model';
-import { Order } from 'src/app/shared/models/order.model';
-import { User } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-table-light',
@@ -10,9 +7,6 @@ import { User } from 'src/app/shared/models/user.model';
 })
 export class TableLightComponent implements OnInit {
 
-  @Input() collectionOrder: Order[];
-  @Input() collectionClient: Client[];
-  @Input() collectionUser: User[];
   @Input() headers: string[];
   constructor() { }
 

@@ -1,4 +1,12 @@
 <p>{{clientListTitle}}</p>
-<app-table-light *ngIf="collectionClient"
- [collectionClient]="collectionClient" [headers]="collectionHeaders">
+<app-table-light *ngIf="collectionClient" [headers]="collectionHeaders">
+  <tr *ngFor="let c of collectionClient">
+    <td>{{ c.id }}</td>
+    <td>{{ c.name }}</td>
+    <td>{{ c.ca }}</td>
+    <td>{{ c.comment }}</td>
+    <td>{{ c.tva }}</td>
+    <td>{{ c.total() }}</td>
+    <td>{{ c.state }}</td>
+  </tr>
 </app-table-light>
