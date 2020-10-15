@@ -1,6 +1,6 @@
 <p>{{clientListTitle}}</p>
-<app-table-dark *ngIf="collectionClient" [headers]="collectionHeaders">
-  <tr *ngFor="let c of collectionClient">
+<app-table-dark *ngIf="collectionClientObservable | async as collection" [headers]="collectionHeaders">
+  <tr *ngFor="let c of collection">
     <td>{{ c.id }}</td>
     <td>{{ c.name }}</td>
     <td>{{ c.ca }}</td>

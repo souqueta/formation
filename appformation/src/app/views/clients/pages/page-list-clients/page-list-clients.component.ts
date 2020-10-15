@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { StateClient } from 'src/app/shared/enums/state-client.enum';
 import { BtnI } from 'src/app/shared/interfaces/btn-i';
 import { Client } from 'src/app/shared/models/client.model';
@@ -12,7 +13,8 @@ import { ClientsService } from '../../services/clients.service';
 export class PageListClientsComponent implements OnInit {
 
   public clientListTitle: string;
-  public collectionClient: Client[];
+  //public collectionClient: Client[];
+  public collectionClientObservable: Observable<Client[]>;
   public collectionHeaders: String[];
   public states = Object.values(StateClient);
 
@@ -28,10 +30,11 @@ export class PageListClientsComponent implements OnInit {
   ngOnInit(): void {
     this.implementBtns();
     this.collectionHeaders = ['Id', 'Name', 'CA', 'Comment', 'TVA', 'Total', 'State']
-    this.cs.collection.subscribe(clients => {
-      this.collectionClient = clients;
-      console.log(this.collectionClient);
-    });
+    // this.cs.collection.subscribe(clients => {
+    //   this.collectionClient = clients;
+    //   console.log(this.collectionClient);
+    // });
+    this.collectionClientObservable = this.cs.collection;
   }
 
   public changeState(client: Client, event) {
@@ -51,16 +54,14 @@ export class PageListClientsComponent implements OnInit {
 
   public getByCaInferiorToTreshold(): void {
     if(this.filterActivated) {
-      this.cs.getByCaInferiorToTreshold(100000).subscribe(
-        datas=>
-          this.collectionClient = datas
-      )
+      // this.cs.getByCaInferiorToTreshold(100000).subscribe(
+      //   datas=>
+      //     this.collectionClient = datas
+      // )
+      this.collectionClientObservable = this.cs.getByCaInferiorToTreshold(100000);
     }
     else {
-      this.cs.collection.subscribe(
-        datas=>
-          this.collectionClient = datas
-      )
+      this.collectionClientObservable = this.cs.collection;
     }
     this.filterActivated = !this.filterActivated;
   }
