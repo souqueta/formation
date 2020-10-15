@@ -21,6 +21,9 @@ export class PageListClientsComponent implements OnInit {
   public btnRoute: BtnI;
   public btnAction: BtnI;
 
+  public title: string;
+  public subtitle: string;
+
   public filterActivated: boolean = true;
 
   constructor(private cs: ClientsService) {
@@ -28,6 +31,8 @@ export class PageListClientsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.title = 'Clients';
+    this.subtitle = 'List of clients';
     this.implementBtns();
     this.collectionHeaders = ['Id', 'Name', 'CA', 'Comment', 'TVA', 'Total', 'State']
     // this.cs.collection.subscribe(clients => {

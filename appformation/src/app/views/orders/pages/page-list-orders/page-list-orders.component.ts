@@ -22,7 +22,12 @@ export class PageListOrdersComponent implements OnInit {
   public btnHref: BtnI;
   public btnAction: BtnI;
 
+  public title: string;
+  public subtitle: string;
+
   constructor( private os: OrdersService) {
+    this.title='Orders';
+    this.subtitle = 'List of orders';
   }
 
   ngOnInit(): void {

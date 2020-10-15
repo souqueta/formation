@@ -1,4 +1,4 @@
-<p>{{clientListTitle}}</p>
+<app-title-b [title]="title" [subtitle]="subtitle">
 <app-table-dark *ngIf="collectionClientObservable | async as collection" [headers]="collectionHeaders">
   <tr *ngFor="let c of collection">
     <td>{{ c.id }}</td>
@@ -17,9 +17,14 @@
     </td>
 
   </tr>
-</app-table-dark>
 
-<app-btn [label]="btnRoute.label" [route]="btnRoute.route"></app-btn>
-<app-btn [label]="btnAction.label" [action]="btnAction.action" (clicked)="getByCaInferiorToTreshold()">
-  <app-icon-filter></app-icon-filter>
-</app-btn>
+  <app-btn [label]="btnRoute.label" [route]="btnRoute.route"></app-btn>
+  <app-btn [label]="btnAction.label" [action]="btnAction.action" (clicked)="getByCaInferiorToTreshold()">
+    <app-icon-filter></app-icon-filter>
+  </app-btn>
+
+</app-table-dark>
+</app-title-b>
+
+
+
