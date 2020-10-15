@@ -1,4 +1,4 @@
-<app-table-light *ngIf="collectionUser" [headers]="collectionHeaders" class="table-striped">
+<app-table-light *ngIf="collectionUser && userConnected" [headers]="collectionHeaders" class="table-striped">
   <tr *ngFor="let c of collectionUser">
    <td>{{ c.id }}</td>
    <td>{{ c.username }}</td>
@@ -16,4 +16,7 @@
 
  </app-table-light>
 
+ <div *ngIf="!userConnected" class="alert alert-danger" role="alert">
+  You need to be logged in, to see the table of users
+</div>
  <app-btn [label]="btnRoute.label" [route]="btnRoute.route"></app-btn>

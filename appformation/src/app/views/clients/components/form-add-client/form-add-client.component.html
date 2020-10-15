@@ -1,13 +1,11 @@
 <div class="container">
   <form [formGroup]="form" (ngSubmit)="onsubmit()">
     <div class="form-group">
-      <label for="username">Username</label>
-      <input formControlName="username" type="text" class="form-control" id="username">
-    </div>
-    <div class="form-group">
       <label for="name">Name</label>
       <input formControlName="name" type="text" class="form-control" id="name">
     </div>
+    <div *ngIf="form.get('name').errors?.required && form.get('name').touched" class="alert alert-danger">Champ vide</div>
+    <div *ngIf="form.get('name').errors?.maxlength && form.get('name').touched" class="alert alert-danger">Max 10 characters</div>
     <div class="form-group">
       <label for="comment">Commentaire</label>
       <textarea formControlName="comment" class="form-control" id="comment"></textarea>
@@ -26,6 +24,6 @@
         <option *ngFor="let s of states" [ngValue]="s">{{s}}</option>
       </select>
     </div>
-    <button type="submit" class="btn btn-primary">Send</button>
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Send</button>
   </form>
 </div>

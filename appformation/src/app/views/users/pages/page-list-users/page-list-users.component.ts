@@ -16,6 +16,7 @@ export class PageListUsersComponent implements OnInit {
   public states = Object.values(StateRole);
 
   public btnRoute: BtnI;
+  public userConnected: boolean;
 
   constructor(private us: UsersService) { }
 
@@ -26,6 +27,7 @@ export class PageListUsersComponent implements OnInit {
       this.collectionUser = users;
       console.log(this.collectionUser);
     });
+    this.userConnected = localStorage.username;//localStorage.username;
   }
 
   public implementBtns(): void {
@@ -40,6 +42,10 @@ export class PageListUsersComponent implements OnInit {
         console.log('After', user.role);
       }
     )
+  }
+
+  public filterDependingOnUserConnectedRole() {
+    
   }
 
 }
