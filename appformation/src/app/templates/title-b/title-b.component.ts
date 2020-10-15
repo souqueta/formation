@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TitleBComponent implements OnInit {
   @Input() title: string;
   @Input() subtitle: string;
-
+  @Input() isClientPage: string;
   constructor() { }
 
   ngOnInit(): void {
