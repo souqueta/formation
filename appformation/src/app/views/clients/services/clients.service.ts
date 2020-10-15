@@ -67,8 +67,8 @@ export class ClientsService {
     return this.update(obj);
   }
 
-  public addClient(client: Client): void {
-    this.http.post<Client>(`${this.urlApi}clients/`, client)
+  public addClient(client: Client): Observable<Client>{
+    return this.http.post<Client>(`${this.urlApi}clients/`, client)
   }
 
 }

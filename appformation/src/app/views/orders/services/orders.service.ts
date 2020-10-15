@@ -59,7 +59,7 @@ private urlApi: string = environment.url;
     )
   }
 
-  public addOrder(order: Order): void {
-    this.http.post<Order>(`${this.urlApi}orders/`, order)
+  public addOrder(order: Order): Observable<Order> {
+    return this.http.post<Order>(`${this.urlApi}orders/`, order)
   }
 }

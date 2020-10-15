@@ -4,10 +4,11 @@ import { TemplatesModule } from 'src/app/templates/templates.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { PageListUsersComponent } from './pages/page-list-users/page-list-users.component';
 import { UsersRoutingModule } from './users-routing.module';
+import { FormLoginComponent } from './components/form-login/form-login.component';
 
 
 @NgModule({
-  declarations: [PageListUsersComponent], //
+  declarations: [PageListUsersComponent, FormLoginComponent], //
   imports: [
     CommonModule,
     UsersRoutingModule,
