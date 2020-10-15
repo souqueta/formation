@@ -32,12 +32,27 @@ export class ClientsService {
     }
 
     public getByState(state_client: string): Observable<Client[]> {
-      return this.http.get<Client[]>(`${this.urlApi}orders?state=${state_client}`).pipe(
+      return this.http.get<Client[]>(`${this.urlApi}clients?state=${state_client}`).pipe(
         map(jsonObjects => {
           return jsonObjects.map(obj => {
             return new Client(obj);
           })
         })
+      )
+    }
+
+    public getByCaInferiorToTreshold(treshold: number): Observable<Client[]> {
+      // return this.http.get<Client[]>(`${this.urlApi}clients`).pipe(
+      //   map(jsonObjects => {
+      //     return jsonObjects.filter(data => (data.ca <= treshold))
+      //   })
+      // )
+      return this.http.get<Client[]>(`${this.urlApi}clients/`).pipe(
+        map(datas => datas.filter(data => data.ca <= treshold)
+          .map(
+            filteredData => new Client (filteredData)
+          )
+        )
       )
     }
 

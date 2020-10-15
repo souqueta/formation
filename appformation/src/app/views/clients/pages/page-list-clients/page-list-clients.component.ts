@@ -17,6 +17,9 @@ export class PageListClientsComponent implements OnInit {
   public states = Object.values(StateClient);
 
   public btnRoute: BtnI;
+  public btnAction: BtnI;
+
+  public filterActivated: boolean = true;
 
   constructor(private cs: ClientsService) {
     this.clientListTitle = 'Ma liste de clients!';
@@ -43,6 +46,23 @@ export class PageListClientsComponent implements OnInit {
 
   public implementBtns(): void {
     this.btnRoute = { label: 'Add a client', route: 'add'}
+    this.btnAction = { label: 'Filter by CA', action: true}
+  }
+
+  public getByCaInferiorToTreshold(): void {
+    if(this.filterActivated) {
+      this.cs.getByCaInferiorToTreshold(100000).subscribe(
+        datas=>
+          this.collectionClient = datas
+      )
+    }
+    else {
+      this.cs.collection.subscribe(
+        datas=>
+          this.collectionClient = datas
+      )
+    }
+    this.filterActivated = !this.filterActivated;
   }
 
 }

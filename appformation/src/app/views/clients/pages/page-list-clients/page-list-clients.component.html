@@ -20,3 +20,6 @@
 </app-table-dark>
 
 <app-btn [label]="btnRoute.label" [route]="btnRoute.route"></app-btn>
+<app-btn [label]="btnAction.label" [action]="btnAction.action" (clicked)="getByCaInferiorToTreshold()">
+  <app-icon-filter></app-icon-filter>
+</app-btn>
