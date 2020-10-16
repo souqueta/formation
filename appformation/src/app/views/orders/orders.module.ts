@@ -9,10 +9,11 @@ import { TextsModule } from 'src/app/texts/texts.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormAddOrderComponent } from './components/form-add-order/form-add-order.component';
 import { PageAddOrderComponent } from './pages/page-add-order/page-add-order.component';
+import { PageTestComponent } from './pages/page-test/page-test.component';
 
 
 @NgModule({
-  declarations: [PageListOrdersComponent, FormAddOrderComponent, PageAddOrderComponent],
+  declarations: [PageListOrdersComponent, FormAddOrderComponent, PageAddOrderComponent, PageTestComponent],
   imports: [
     CommonModule,
     OrdersRoutingModule,

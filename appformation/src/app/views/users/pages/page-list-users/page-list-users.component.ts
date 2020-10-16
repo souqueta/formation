@@ -12,22 +12,42 @@ import { User } from 'src/app/shared/models/user.model';
 export class PageListUsersComponent implements OnInit {
 
   public collectionUser: User[];
+  // public collectionUserObservable: ObservUser[];
   public collectionHeaders: String[];
   public states = Object.values(StateRole);
 
   public btnRoute: BtnI;
   public userConnected: boolean;
 
+  public user: User;
+  public roles = Object.values(StateRole);
+
+  public isAdmin: boolean;
+
   constructor(private us: UsersService) { }
 
   ngOnInit(): void {
+    this.isAdmin = false;
     this.implementBtns();
     this.collectionHeaders = ['Id', 'Username', 'Role'];
     this.us.collection.subscribe(users => {
       this.collectionUser = users;
       console.log(this.collectionUser);
     });
-    this.userConnected = localStorage.username;//localStorage.username;
+
+    if (localStorage.id) {
+      this.us.getById(localStorage.id).subscribe(data => {
+        this.user = data;
+        if (this.user.role === StateRole.ADMIN) {
+          this.isAdmin = true;
+          this.us.getAll().subscribe(datas => this.collectionUser = datas);
+        } else {
+          this.collectionUser.push(this.user);
+        }
+        });
+      this.userConnected = true;
+      this.collectionHeaders = ['ID', 'Username', 'Role'];
+    }
   }
 
   public implementBtns(): void {
@@ -44,8 +64,14 @@ export class PageListUsersComponent implements OnInit {
     )
   }
 
-  public filterDependingOnUserConnectedRole() {
-    
+  public filterDependingOnUserConnectedRole(user: User) {
+      this.us.filterDependingOnUserConnectedRole(user).subscribe(
+        data => {
+          console.log("Before", data);
+          this.collectionUser = data;
+          console.log('After', data);
+        }
+      )
   }
 
 }

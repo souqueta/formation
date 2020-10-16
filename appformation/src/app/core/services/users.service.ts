@@ -40,14 +40,46 @@ export class UsersService {
       )
     }
 
-    public updateRole(client: User, state: StateRole): Observable<User> {
-      const obj = new User({...client})
+    public updateRole(user: User, state: StateRole): Observable<User> {
+      const obj = new User({...user})
       obj.role = state;
       return this.update(obj);
     }
 
 
-  public update(client: User): Observable<User> {
-    return this.http.put<User>(`${this.urlApi}users/${client.id}`, client)
+  public update(user: User): Observable<User> {
+    return this.http.put<User>(`${this.urlApi}users/${user.id}`, user)
+  }
+
+  public filterDependingOnUserConnectedRole(user: User): Observable<User[]> {
+    return this.http.get<User[]>(`${this.urlApi}users`).pipe(
+      map(datas => datas.filter(data =>  user.role === StateRole.ADMIN ? true : data.id === user.id)
+        .map(
+          filteredData => {return new User (filteredData);}
+        )
+      )
+    )
+  }
+
+  public getById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.urlApi}users/${id}`).pipe(
+      map(data => {
+        return new User(data);
+      })
+    )
+  }
+
+  public getAll(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.urlApi}users`).pipe(
+      map(datas => {
+        return datas.map(obj => {
+          return new User(obj)
+        })
+      })
+    );
+  }
+
+  public addUser(user: User): Observable<User> {
+    return this.http.post<User>(`${this.urlApi}users/`, user)
   }
 }

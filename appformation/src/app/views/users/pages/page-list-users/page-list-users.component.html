@@ -1,22 +1,58 @@
-<app-table-light *ngIf="collectionUser && userConnected" [headers]="collectionHeaders" class="table-striped">
-  <tr *ngFor="let c of collectionUser">
-   <td>{{ c.id }}</td>
-   <td>{{ c.username }}</td>
-   <!-- <td>{{ c.role }}</td> -->
-   <!-- <td [appColorState]="c.state">{{ c.state }}</td> -->
-   <!--todo-->
-  <td > <!--[appColorState]="c.role" -->
-     <select (change) = "changeRole(c, $event)">
-       <option *ngFor="let s of states" [value]="s" [selected]= "s === c.role">
-         {{s}}
-       </option>
-     </select>
-   </td>
- </tr>
-
- </app-table-light>
-
- <div *ngIf="!userConnected" class="alert alert-danger" role="alert">
-  You need to be logged in, to see the table of users
+<!-- <div *ngIf="role == 'Admin'">
+  <app-table-striped *ngIf="users" [headers]="headers">
+    <tr *ngFor="let u of users">
+      <td>{{ u.id }}</td>
+      <td>{{ u.username }}</td>
+      <td>
+        <select (change)="updateRole(u, $event)">
+          <option *ngFor="let role of roles" [value]="role" [selected]="role === u.role">
+            {{ role }}
+          </option>
+        </select>
+      </td>
+    </tr>
+  </app-table-striped>
+  <app-btn [label]="btnAddUser.label" [route]="btnAddUser.route"></app-btn>
 </div>
- <app-btn [label]="btnRoute.label" [route]="btnRoute.route"></app-btn>
+<!-- <ng-template #else></ng-template> -->
+
+<!-- <div *ngIf="role != 'Admin'">
+  <app-table-striped [headers]="headers">
+    <tr>
+      <td>{{ user.id }}</td>
+      <td>{{ user.username }}</td>
+      <td>
+        <select (change)="updateRole(user, $event)">
+          <option *ngFor="let role of roles" [value]="role" [selected]="role === user.role">
+            {{ role }}
+          </option>
+        </select>
+      </td>
+    </tr>
+  </app-table-striped>
+  <app-btn [label]="btnAddUser.label" [route]="btnAddUser.route"></app-btn>
+</div> -->
+
+<div *ngIf="userConnected">
+  <app-table-light class="table-striped" *ngIf="collectionUser" [headers]="collectionHeaders"> <!--class="table-striped" -->
+    <tr *ngFor="let u of collectionUser">
+      <td>{{ u.id }}</td>
+      <td>{{ u.username }}</td>
+      <td>
+        <select (change)="changeRole(u, $event)">
+          <option *ngFor="let role of roles" [value]="role" [selected]="role === u.role">
+            {{ role }}
+          </option>
+        </select>
+      </td>
+    </tr>
+  </app-table-light>
+
+  <app-btn *ngIf="isAdmin" [label]="btnRoute.label" [route]="btnRoute.route"></app-btn>
+</div>
+
+<div *ngIf="!userConnected">
+  <div class="alert alert-danger" role="alert">
+    Sorry, not connected
+  </div>
+</div>

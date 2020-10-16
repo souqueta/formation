@@ -131,7 +131,7 @@
       "id": "2",
       "username": "user1",
       "password": "user1",
-      "role": "USER1"
+      "role": "USER"
     },
     {
       "id": "3",
@@ -150,6 +150,12 @@
       "username": "user4",
       "password": "user4",
       "role": "USER"
+    },
+    {
+      "username": "souqueta",
+      "password": "souqueta",
+      "role": "ADMIN",
+      "id": "g2MFtnY"
     }
   ]
 }

@@ -1,5 +1,5 @@
 <!-- <app-global-text [booleanPage]="true"> -->
-  <app-title-a [title]="title" [subtitle]="subtitle">
+  <app-title-a *ngIf="route.data | async as data2" [title]="data2.title" [subtitle]="data2.subtitle">
   <app-table-light *ngIf="collectionOrderObservable | async as  collection" [headers]="collectionHeaders">
   <tr *ngFor="let c of collection">
     <td>{{ c.typePresta }}</td>

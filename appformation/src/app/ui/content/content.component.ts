@@ -24,8 +24,8 @@ export class ContentComponent implements OnInit {
     this.us.getByUsernameAndPassword('user1', 'user1').subscribe(
       data => {
         console.log(data);
-        localStorage.username = data[0].username;
-        console.log(localStorage.username);
+        localStorage.user = data[0];
+        console.log("value du user dans getByUsernameAndPassword : " + localStorage.user);
         localStorage.id = data[0].id;
       }
     )

@@ -25,8 +25,11 @@ export class PageLoginComponent implements OnInit {
       data => {
         console.log(data);
         if (data[0] && data[0].username != null) {
-          console.log("you are logged in!!!!")
-          localStorage.username = data[0].username
+          console.log("you are logged in!!!!");
+          console.log(data[0]);
+          localStorage.id = data[0].id;
+          localStorage.username = data[0].username;
+          console.log(localStorage.id);
           this.router.navigate(['home']);
         } else {
           console.log("Sorry, but cannot log in! ");

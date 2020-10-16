@@ -14,8 +14,8 @@ const routes: Routes = [
   { path: 'orders', canActivate: [ControlService], loadChildren: () => import('./views/orders/orders.module').then(m => OrdersModule)},
   //{ path: 'clients', component: PageListClientsComponent},
   { path: 'clients', canActivate: [ControlService], loadChildren: () => import('./views/clients/clients.module').then(m => ClientsModule)},
-  { path: 'users', canActivate: [ControlService], loadChildren: () => import('./views/users/users.module').then(m => UsersModule)},
-  { path: 'login', component: PageLoginComponent },
+  { path: 'users', loadChildren: () => import('./views/users/users.module').then(m => UsersModule)},
+  { path: 'login', component: PageLoginComponent }, //  loadChildren: () => import('./views/users/users.module').then(m => LoginModule)
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];

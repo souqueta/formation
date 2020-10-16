@@ -1,5 +1,7 @@
 import { LogicalFileSystem } from '@angular/compiler-cli/src/ngtsc/file_system';
+import { Route } from '@angular/compiler/src/core';
 import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { StateOrder } from 'src/app/shared/enums/state-order.enum';
 import { BtnI } from 'src/app/shared/interfaces/btn-i';
@@ -25,7 +27,7 @@ export class PageListOrdersComponent implements OnInit {
   public title: string;
   public subtitle: string;
 
-  constructor( private os: OrdersService) {
+  constructor( private os: OrdersService, public route: ActivatedRoute) {
     this.title='Orders';
     this.subtitle = 'List of orders';
   }

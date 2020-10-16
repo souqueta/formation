@@ -14,4 +14,8 @@ export class IconDeconnectionComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public disconnect(){
+    localStorage.removeItem('user');
+  }
+
 }
